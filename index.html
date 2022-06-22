@@ -97,6 +97,69 @@
         a+=num;
         $("#ans").text(a);
     })
+    $("body").keypress(function(e)
+    {
+        if(e.key=="*")
+        {
+            operator="*";
+            op="*";
+            a+=operator;
+            result();
+
+        }
+        else if(e.key=="-")
+        {
+            operator="-";
+            op="-";
+            a+=operator;
+            result();
+
+        }
+        else if(e.key=="+")
+        {
+            operator="+";
+            op="+";
+            a+=operator;
+            result();
+
+        }
+        else if(e.key=="/")
+        {
+            operator="/";
+            a+=operator;
+            op="/";
+            result();
+
+        }
+        else if(e.key=="%")
+        {
+            operator="%";
+            a+=operator;
+            result();
+
+        }
+        else if(e.key=="=" || e.key=="Enter")
+        {
+            operator="equal";
+            a+="=";
+            console.log(operator);
+            result();
+        }
+        else if(e.key==" ")
+        {
+            operator="AC";
+            // a+="=";
+            // console.log(operator);
+            result();
+        }
+        else{
+            num=Number(e.key);
+            console.log(num);
+            a+=num;
+        }
+        $("#ans").text(a);
+        // result();
+    })
     $(".operators").click(function(e)
     {
         operator=(this.id);
@@ -121,12 +184,15 @@
         console.log(a)
         $("#ans").text(a);
         console.log(operator);
+        result();
+    })
+    function result()
+    {
         if(operator=="+")
         {
-            console.log(num);
-            console.log(ans);
             ans=Number(ans)+Number(num);
             op="+";
+            console.log(ans+"k;sljdafjshda;flj");
         }
         else if(operator=="-")
         {
@@ -153,31 +219,44 @@
         }
         
         else if(operator=="equal"){
+            // console.log(op);
             switch (op)     
             {
                 case "+":
                     ans+=num;
+                    num=ans;
+                    ans=0;
+                    // console.log(ans +"lkjfsjdfjds");
                     break;
                 case "-":
                     ans-=num;
+                    num=ans;
+                    ans=0;
                     break;
                 case "*":
                     ans*=num;
+                    num=ans;
+                    ans=0;
                     break;
                 case "/":
                     ans/=num;
+                    num=ans;
+                    ans=0;
                     break;
             }
-            $("#ans").text(ans);
+            console.log(ans);
+            a=num;
+            $("#ans").text(a);
         }
         else if(operator=="AC")
         {
-            num=0,ans=0,mul=1,a="",operator="",op="";
+            num=0,ans=0,mul=1,a="0",operator="",op="";
+            console.log(a + "sdflk");
             $("#ans").text(a);
+
                  
         }
-        
-    })
+    }
 
 
 </script>
